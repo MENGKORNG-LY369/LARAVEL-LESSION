@@ -1,0 +1,8 @@
+- php artisan key:generate
+- php artisan migrate
+- php artisan db:seed
+- php artisan make:resource StudentResource
+
+___________________________________________________________________
+/* Homework */
+- add column 'score' to student table

@@ -1,0 +1,25 @@
+Ex3:Laravel 24B
+-create new project name: laravel-basic-api
+-create model with migration:
+  php artisan make:model Customer -m
+  -name
+  -age
+  -gender
+  -phone
+  -email
+  -date_of_birth
+-create controller api:
+  php artisan make:controller Api/CustomerController --api
+-define route api
+  -/customer/list
+  -/customer/create
+  -/customer/show
+  -/customer/update
+  -/customer/delete
+  
+  Q1.write api to get all customer.
+  Q2.write api to create new customer.
+  Q3.write api to show specific customer.
+  Q4.write api to update customer.
+  Q5.write api to delete customer.
+-Submit to class telegram with screenshot.

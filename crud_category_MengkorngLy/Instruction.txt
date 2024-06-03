@@ -1,0 +1,77 @@
+Resource: Manage Respond
+  +List All 
+  NameResource::collection(data)
+  +Get Specific or Get Detail
+  new NameResource(data)
+
+
+Ex7:Crud api Cateogry (name,description)
+1,api list 
++end point: {{url}}/category/list
++method: get
++Respond:
+{
+    "success": true,
+    "data": [
+        {
+            "id": 1,
+            "name": "sport",
+        },
+    ]
+}
+
+2,api create
++end point: {{url}}/category/create
++method:post
++request:
+{
+    "name": "sport",
+    "description":"This is sport of pnc"
+}
++respond:
+{
+    "success": true,
+    "data": true,
+    "message": "category created successfully"
+}
+
+3,show api:
++endpint: {{url}}/category/show/{id}
++method:get
++respond:
+{
+    "success": true,
+    "data": {
+        "id": 1,
+        "name": "sport",
+        "description": "This is sport of pnc"
+    }
+}
+
+4,update api:
++endpoint: {{url}}/category/update/{id}
++method:put
++request:
+{
+    "name": "Arobic",
+    "description": "This is our Arobic"
+}
++respond:
+{
+    "success": true,
+    "data": true,
+    "message": "category updated successfully"
+}
+
+
+5,delete api
++endpoint: {{url}}/category/delete/{id}
++respond:
+{
+    "success": true,
+    "data": true,
+    "message": "category deleted successfully"
+}
+
+
++Using Resource!

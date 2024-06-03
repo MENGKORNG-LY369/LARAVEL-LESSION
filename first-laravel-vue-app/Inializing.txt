@@ -1,0 +1,120 @@
+- composer create-project laravel/laravel first-laravel-vue-app
+- cd first-laravel-vue-app
+- npm install
+- npm install vue@latest vue-router@4 @vitejs/plugin-vue
+
+
+--------------------------------------------------------------------
+// package.json 
+"dependencies": {
+    "@vitejs/plugin-vue": "^4.6.0",
+    "vue": "^3.2.36",
+    "vue-router": "^4.2.5"
+}
+
+
+--------------------------------------------------------------------
+// vite.config.js
+import { defineConfig } from "vite";
+import laravel from "laravel-vite-plugin";
+import vue from "@vitejs/plugin-vue";
+export default defineConfig({
+    plugins: [
+        vue(),
+        laravel({
+            input: ["resources/css/app.css", "resources/js/app.js"],
+            refresh: true,
+        }),
+    ],
+    resolve: {
+        alias: {
+            vue: "vue/dist/vue.esm-bundler.js",
+        },
+    },
+});
+
+
+--------------------------------------------------------------------
+- inside of the "./resources/js" and create a new file "App.vue".
+
+- Rename "app.js" to "main.js"
+    import { createApp } from "vue";
+
+    import App from "./App.vue";
+
+    createApp(App).mount("#app");
+
+
+--------------------------------------------------------------------
+- Inside of the "./resources/views/welcome.blade.php", delete everything and add:
+/*
+    <head>
+    @vite(['resources/js/main.js'])
+    </head>
+
+    <body>
+        <div id="app"></div>
+    </body>
+*/
+
+
+- Create "./resources/js/router.js"
+/*
+    import { createRouter, createWebHistory } from "vue-router";
+
+    const routes = [];
+
+    export default createRouter({
+        history: createWebHistory(),
+        routes,
+    });
+*/
+
+- Inside "./resources/js/app.js"
+/*
+    import router from "./router/router";
+    import { createApp } from "vue";
+
+    import App from "./App.vue";
+
+    createApp(App).use(router).mount("#app");
+*/
+
+- <router-link to="/test"> Take me to Test page </router-link>
+
+- Inside "./resources/js/router.js"
+/*
+    import { createRouter, createWebHistory } from "vue-router";
+
+    const routes = [
+        {
+            path: "/",
+            component: () => import("./pages/HomePage.vue"),
+        },
+    ];
+
+    export default createRouter({
+        history: createWebHistory(),
+        routes,
+    });
+*/
+
+- Inside of "./resources/js/App.vue"
+/*
+    <template>
+        <router-view v-slot="{ Component, route }">
+            <div :key="route.name">
+                <Component :is="Component" />
+            </div>
+        </router-view>
+    </template>
+*/
+
+- Inside of  "./routes/web.php"
+/*
+    Route::get('/{vue_capture?}', function () {
+        return view('welcome');
+    })->where('vue_capture', '[\/\w\.-]*');
+*/
+
+- npm install axios

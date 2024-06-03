@@ -1,0 +1,18 @@
+Laravel 24C
+Ex4:
+-create new project laravel-crud-api
+-create controller api: php artisan make:controller Api/UserController --api
+-create model:User
+-create migrations:users
+  -name
+  -age
+  -province
+php artisan make:model User -m
+-connect database 
+-run migrate: php artisan migrate or php artisan migrate:fresh
+-define route:
+  -/user/list
+  -/user/create
+  -/user/show/{id}
+  -/user/update/{id}
+  -/user/delete/{id}

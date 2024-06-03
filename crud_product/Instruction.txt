@@ -1,0 +1,25 @@
+order/orderProduct (post)
++
+{
+  "student_id":"1",
+  "products":[
+  {
+    "product_id":1,
+    "qty":2
+  },
+  {
+    "product_id":2,
+    "qty":4
+  }
+  ],
+  "total_price":"400"
+}
+
+table:orders
+id  student_id  total_price
+1   1           400
+
+table:order_products
+id    order_id     product_id   qty
+1     1            1            2
+2     1            2            4
